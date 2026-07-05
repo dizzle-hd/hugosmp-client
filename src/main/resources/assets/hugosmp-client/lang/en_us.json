@@ -1,0 +1,8 @@
+{
+	"key.category.hugosmp-client.main": "HugoSMP Client",
+	"key.hugosmp-client.toggle_coords_hud": "Toggle Coordinates HUD",
+	"key.hugosmp-client.open_settings": "Open HugoSMP Settings",
+	"key.hugosmp-client.open_hud_editor": "Open HUD Editor",
+	"key.hugosmp-client.set_waypoint": "Set Waypoint Here",
+	"hugosmp-client.settings.title": "HugoSMP Client Settings"
+}

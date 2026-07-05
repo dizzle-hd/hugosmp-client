@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "hugosmp-client",
+	"version": "${version}",
+	"name": "HugoSMP Client",
+	"description": "The official client-side companion mod for the HugoSMP community. Clean quality-of-life and cosmetic enhancements only - no gameplay-altering cheats.",
+	"authors": [
+		"Julian"
+	],
+	"license": "All Rights Reserved",
+	"icon": "assets/hugosmp-client/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "com.julian.HugosmpClient",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "com.julian.client.HugosmpClientClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		{
+			"config": "hugosmp-client.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}

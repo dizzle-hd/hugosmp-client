@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.julian.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"FullbrightMixin",
+		"ItemScaleMixin",
+		"ItemEntityRenderStateMixin",
+		"ItemEntityScaleMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
