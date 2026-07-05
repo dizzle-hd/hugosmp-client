@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.minecraft.client.Minecraft
 import net.minecraft.network.chat.Component
 
-private const val DEATH_WAYPOINT_LABEL = "Death"
+private const val DEATH_WAYPOINT_LABEL = "Letzter Death"
 private const val DEATH_WAYPOINT_COLOR = 0xFF5C5C
 
 /** Sends a client-only chat message and drops a beacon waypoint at the spot you died, so you can find your way back. */

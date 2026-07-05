@@ -5,6 +5,7 @@ import com.julian.client.config.ConfigManager
 import com.julian.client.config.Waypoint
 import com.julian.client.gui.HudEditorScreen
 import com.julian.client.gui.HugosmpConfigScreen
+import com.julian.client.gui.WaypointManagerScreen
 import com.mojang.blaze3d.platform.InputConstants
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper
@@ -31,6 +32,10 @@ object HugosmpKeyBindings {
         KeyMapping("key.hugosmp-client.set_waypoint", InputConstants.UNKNOWN.value, category)
     )
 
+    val openWaypoints: KeyMapping = KeyMappingHelper.registerKeyMapping(
+        KeyMapping("key.hugosmp-client.open_waypoints", GLFW.GLFW_KEY_KP_ADD, category)
+    )
+
     fun register() {
         ClientTickEvents.END_CLIENT_TICK.register { mc ->
             while (toggleCoordsHud.consumeClick()) {
@@ -43,6 +48,9 @@ object HugosmpKeyBindings {
             }
             while (openHudEditor.consumeClick()) {
                 mc.setScreen(HudEditorScreen(mc.screen))
+            }
+            while (openWaypoints.consumeClick()) {
+                mc.setScreen(WaypointManagerScreen(mc.screen))
             }
             while (setWaypoint.consumeClick()) {
                 val player = mc.player ?: continue

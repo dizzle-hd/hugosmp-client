@@ -4,5 +4,6 @@
 	"key.hugosmp-client.open_settings": "Open HugoSMP Settings",
 	"key.hugosmp-client.open_hud_editor": "Open HUD Editor",
 	"key.hugosmp-client.set_waypoint": "Set Waypoint Here",
+	"key.hugosmp-client.open_waypoints": "Open Waypoints Menu",
 	"hugosmp-client.settings.title": "HugoSMP Client Settings"
 }

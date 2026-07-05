@@ -53,7 +53,7 @@ object WaypointFeature {
                 poseStack.popPose()
 
                 if (distanceSquared < LABEL_MAX_DISTANCE * LABEL_MAX_DISTANCE) {
-                    drawLabel(poseStack, bufferSource, font, waypoint.label, relX, relY + 2.2, relZ, rotation)
+                    drawLabel(poseStack, bufferSource, font, waypoint.label, waypoint.colorRGB, relX, relY + 2.2, relZ, rotation)
                 }
             }
         }
@@ -66,12 +66,19 @@ object WaypointFeature {
         return dx * dx + dy * dy + dz * dz
     }
 
-    /** Same billboard trick vanilla uses for entity nametags - fixed world-space scale, so distance alone (via normal 3D perspective) keeps it a sensible size. */
+    /**
+     * Same billboard trick vanilla uses for entity nametags - fixed world-space
+     * scale, so distance alone (via normal 3D perspective) keeps it a sensible
+     * size. Styled like the rest of the mod (dark slate backdrop) rather than
+     * a plain vanilla nametag, with the text tinted to the waypoint's own
+     * beacon color so the label reads as "this marker's" label at a glance.
+     */
     private fun drawLabel(
         poseStack: com.mojang.blaze3d.vertex.PoseStack,
         bufferSource: net.minecraft.client.renderer.MultiBufferSource,
         font: Font,
         text: String,
+        colorRGB: Int,
         relX: Double, relY: Double, relZ: Double,
         rotation: org.joml.Quaternionf
     ) {
@@ -82,9 +89,11 @@ object WaypointFeature {
         poseStack.mulPose(rotation)
         poseStack.scale(-0.025f, -0.025f, 0.025f)
 
+        val textColor = (0xFF shl 24) or (colorRGB and 0xFFFFFF)
+        val backgroundColor = (0xB0 shl 24) or 0x1A1D24
         font.drawInBatch(
-            text, -textWidth / 2f, 0f, 0xFFFFFF, false,
-            poseStack.last().pose(), bufferSource, Font.DisplayMode.SEE_THROUGH, 0x40000000.toInt(), 0xF000F0
+            text, -textWidth / 2f, 0f, textColor, false,
+            poseStack.last().pose(), bufferSource, Font.DisplayMode.SEE_THROUGH, backgroundColor, 0xF000F0
         )
         poseStack.popPose()
     }
