@@ -3,7 +3,7 @@
 	"id": "hugosmp-client",
 	"version": "${version}",
 	"name": "HugoSMP Client",
-	"description": "The official client-side companion mod for the HugoSMP community. Clean quality-of-life and cosmetic enhancements only - no gameplay-altering cheats.",
+	"description": "An unofficial client-side companion mod for the HugoSMP community. Clean quality-of-life and cosmetic enhancements only - no gameplay-altering cheats. Not affiliated with HugoSMP.net.",
 	"authors": [
 		"Julian"
 	],
