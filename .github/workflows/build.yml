@@ -6,6 +6,9 @@
 name: build
 on: [pull_request, push]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -28,3 +31,12 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
+      # Every push to master gets its own GitHub release with the built jars
+      # attached - not run for pull requests, so PR builds never publish one.
+      - name: create release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Build ${{ github.run_number }}
+          files: build/libs/*.jar
